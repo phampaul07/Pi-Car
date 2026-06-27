@@ -1,41 +1,41 @@
-# Template_Module_10
+# Autonomous PiCar: Motor Control & Computer Vision System
 
-This module is for the final project.
+This Raspberry Pi-based vehicle to features closed-loop **PID motor controls**, real-time **signal processing (FFT)**, and **OpenCV computer vision** for navigation, target tracking, and environment-aware cruise control.
 
-## PiCar Configuration
+---
 
-Previously, there were CONFIG.txt files for each of the cars for setting the servo-motor ranges.The hardware
-is swapped too frequently to maintain these configuration files for each of the cars. Please run the 
-configure_servos.py script in the repository to create your own configuration file for that particular PiCar.
+## Core Project Objectives & Deliverables
 
-## It includes
-- Several example data files, good and one bad
-- configure_servos.py - This program is used for configuring each of the servo-motors ranges and "center".
-  (Note: low-end means left (swivel, steer), down (nod) and high-end means right (swivel, steer), up (nod))
-- check_servos.py - This program is good for checking the span of the servos for a given configuration file
-- script1.py (and 2,3,4) - These programs are from Module 9 and can be used on the real PiCar for this module
+### [Objective 1] Suspended Loop Control (`objective1.py`)
+* **Description:** In this objective, I was tasked with implementing closed-loop velocity control on a suspended, no-load vehicle to target a stable 4.0 RPS.
+* **Signal Validation:** In order to collect enough data, I tuned the vehicle to utilize a 200 Hz Analog-to-Digital (AD) sampling rate. I validated my real-time calculations using a Fast Fourier Transform (FFT) analysis, confirming a dominant steady-state frequency spike at 7.94 Hz (3.97 RPS).
+* **Tuning Parameters:** $K_p = 0.03$, $K_i = 11.0$, $K_d = 0.6$.
+* My data is looged in `data/car_noload_4rps.txt`.
 
-## Deliverables
-- objective1.py # Control on noload car
-- objective2.py # Movement with control
-- objective3.py # Seeker
-- objective4.py # Traffic light
-- objective5.py # Group's choice
-- car_noload_4rps.txt (Objective #1)
-- manual_car_[specified-speed]rps.txt (Objective #2)
-- Seeker.txt (Objective #3)
-- Traffic_light.txt (Objective #4)
-- Objective_5.txt(or png) (Objective #5)
+### [Objective 2] Ground-Driving Movement (`objective2.py`)
+* **Description:** I tracked the vehicle's velocity under full body load and floor friction. The PiCar required aggressive gains to overcome the rolling resistance and static friction.
+* **Tuning Parameters:** $K_p = 11.0$, $K_i = 7.0$, $K_d = 0.1$.
+* I logged my data in `data/manual_car_[speed]rps.txt`.
+
+### [Objective 3] Autonomous Target Seeker (`objective3.py`)
+* **Description:** I programmed the camera to sweep and locate a blue object over 10 feet away. I then aligned the trajectory using a visual geometric center-of-mass (COM) error loop, and I utilized ultrasonic deceleration to park the car safely without collision.
+* **Vision Pipeline:** Images taken on the Pi camera was converted from RGB to HSV color space to build a robust binary pixel mask against ambient shadows.
+* My execution logs are in `data/Seeker.txt`.
+
+### [Objective 4] Autonomous Traffic Light System (`objective4.py`)
+* **Description:** I achieved direct line driving by utilizing an MPU-6050 accelerometer gyroscope tracker for real-time heading correction.
+* **Color Decision Matrix:** I processed three concurrent HSV masks (Red, Yellow, Green). For the Red mask, I utilized a bitwise OR operation to join the split bounds (0–10 and 160–180 Hue).
+* **Behavioral Logic:** I designed the system to continue on Green, apply a linear braking deceleration curve on Yellow, and execute a full halt at 170 cm on Red.
+* My execution logs are in `data/Traffic_light.txt`.
+
+### [Objective 5] Hallway Cruise Control (`objective5.py`)
+* **Description:** For this cumulative challenge, I drove the vehicle through a hallway grid involving an uphill ramp climb, a wall-bounded 180° three-point turn, and a downhill ramp descent.
+* **Dynamics Management:** I raised the parameters ($K_i = 15.0$, $K_d = 0.8$) to counteract gravity. I also built a specialized active braking routine that reverses motor polarity if gravity accelerates the vehicle 1.5 RPS beyond my target threshold.
+* My telemetry data is in `data/Objective_5.txt` or `plots/Objective_5.png`.
+
+---
 
 
-## NOTE:
-For data files, data_example.txt and data_example2.txt are examples of acceptable data files.  
-They include the sampling time and note that the second file includes more data than what was 
-being asked for, which is ok, as long as the required elements are present.
-
-data_example_bad.txt has two problems.  
-- it is missing the sampling period to start the first line
-- note that the time samples are not equally spaced
-
-Also, do not include extra lines without data.  So if you have 10,000 element arrays for example,
-but only 2000 lines that contain actual values, do not inculde 8000 lines of 0's.
+## Academic Citation
+For explicit design equations, transfer functions, and full mathematical derivations of my feedforward ratios, please read my complete technical paper:
+**[Read my Full Technical Report](picarpaper.pdf)**
