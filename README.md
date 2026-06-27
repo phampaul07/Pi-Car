@@ -56,7 +56,7 @@ This Raspberry Pi-based vehicle to features closed-loop **PID motor controls**, 
   </tr>
 </table>
 
-<video src="vision-tests/traffic.mp4" autoplay loop muted playsinline width="100%"></video> 
+https://github.com/user-attachments/assets/c8aca190-a707-4b80-b4c4-82076a0f5cad
 
 ### [Objective 5] Hallway Cruise Control (`objective5.py`)
 * **Description:** For this cumulative challenge, I drove the vehicle through a hallway grid involving an uphill ramp climb, a wall-bounded 180° three-point turn, and a downhill ramp descent.
