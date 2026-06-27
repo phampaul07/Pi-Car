@@ -10,7 +10,7 @@ This Raspberry Pi-based vehicle to features closed-loop **PID motor controls**, 
 * **Description:** In this objective, I was tasked with implementing closed-loop velocity control on a suspended, no-load vehicle to target a stable 4.0 RPS.
 * **Signal Validation:** In order to collect enough data, I tuned the vehicle to utilize a 200 Hz Analog-to-Digital (AD) sampling rate. I validated my real-time calculations using a Fast Fourier Transform (FFT) analysis, confirming a dominant steady-state frequency spike at 7.94 Hz (3.97 RPS).
 * **Tuning Parameters:** $K_p = 0.03$, $K_i = 11.0$, $K_d = 0.6$.
-* My data is looged in `data/car_noload_4rps.txt`.
+* My data is logged in `data/car_noload_4rps.txt`.
 
 ### [Objective 2] Ground-Driving Movement (`objective2.py`)
 * **Description:** I tracked the vehicle's velocity under full body load and floor friction. The PiCar required aggressive gains to overcome the rolling resistance and static friction.
@@ -22,11 +22,38 @@ This Raspberry Pi-based vehicle to features closed-loop **PID motor controls**, 
 * **Vision Pipeline:** Images taken on the Pi camera was converted from RGB to HSV color space to build a robust binary pixel mask against ambient shadows.
 * My execution logs are in `data/Seeker.txt`.
 
+<table>
+  <tr>
+    <td align="center"><strong>Original RGB & Center of Mass</strong></td>
+    <td align="center"><strong>HSV Binary Mask</strong></td>
+  </tr>
+  <tr>
+    <td><img src="vision_tests/COM.jpg" alt="Center of Mass Detection" width="400"/></td>
+    <td><img src="vision_tests/maskbin.jpg" alt="Binary Mask" width="400"/></td>
+  </tr>
+</table>
+
+
 ### [Objective 4] Autonomous Traffic Light System (`objective4.py`)
 * **Description:** I achieved direct line driving by utilizing an MPU-6050 accelerometer gyroscope tracker for real-time heading correction.
 * **Color Decision Matrix:** I processed three concurrent HSV masks (Red, Yellow, Green). For the Red mask, I utilized a bitwise OR operation to join the split bounds (0–10 and 160–180 Hue).
 * **Behavioral Logic:** I designed the system to continue on Green, apply a linear braking deceleration curve on Yellow, and execute a full halt at 170 cm on Red.
 * My execution logs are in `data/Traffic_light.txt`.
+
+<table>
+  <tr>
+    <td align="center"><strong>Original Frame</strong></td>
+    <td align="center"><strong>Red Mask</strong></td>
+    <td align="center"><strong>Yellow Mask</strong></td>
+    <td align="center"><strong>Green Mask</strong></td>
+  </tr>
+  <tr>
+    <td><img src="vision_tests/Original_Output.jpg" alt="Original Traffic Light" width="200"/></td>
+    <td><img src="vision_tests/RedMask_Output.jpg" alt="Red Mask" width="200"/></td>
+    <td><img src="vision_tests/YellowMask_Output.jpg" alt="Yellow Mask" width="200"/></td>
+    <td><img src="vision_tests/GreenMask_Output.jpg" alt="Green Mask" width="200"/></td>
+  </tr>
+</table>
 
 ### [Objective 5] Hallway Cruise Control (`objective5.py`)
 * **Description:** For this cumulative challenge, I drove the vehicle through a hallway grid involving an uphill ramp climb, a wall-bounded 180° three-point turn, and a downhill ramp descent.
