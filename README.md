@@ -28,8 +28,8 @@ This Raspberry Pi-based vehicle to features closed-loop **PID motor controls**, 
     <td align="center"><strong>HSV Binary Mask</strong></td>
   </tr>
   <tr>
-    <td><img src="vision_tests/COM.jpg" alt="Center of Mass Detection" width="400"/></td>
-    <td><img src="vision_tests/maskbin.jpg" alt="Binary Mask" width="400"/></td>
+    <td><img src="vision-tests/COM.jpg" alt="Center of Mass Detection" width="400"/></td>
+    <td><img src="vision-tests/maskbin.jpg" alt="Binary Mask" width="400"/></td>
   </tr>
 </table>
 
@@ -48,10 +48,10 @@ This Raspberry Pi-based vehicle to features closed-loop **PID motor controls**, 
     <td align="center"><strong>Green Mask</strong></td>
   </tr>
   <tr>
-    <td><img src="vision_tests/Original_Output.jpg" alt="Original Traffic Light" width="200"/></td>
-    <td><img src="vision_tests/RedMask_Output.jpg" alt="Red Mask" width="200"/></td>
-    <td><img src="vision_tests/YellowMask_Output.jpg" alt="Yellow Mask" width="200"/></td>
-    <td><img src="vision_tests/GreenMask_Output.jpg" alt="Green Mask" width="200"/></td>
+    <td><img src="vision-tests/Original_Output.jpg" alt="Original Traffic Light" width="200"/></td>
+    <td><img src="vision-tests/RedMask_Output.jpg" alt="Red Mask" width="200"/></td>
+    <td><img src="vision-tests/YellowMask_Output.jpg" alt="Yellow Mask" width="200"/></td>
+    <td><img src="vision-tests/GreenMask_Output.jpg" alt="Green Mask" width="200"/></td>
   </tr>
 </table>
 
