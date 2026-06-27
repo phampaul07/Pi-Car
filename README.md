@@ -33,6 +33,7 @@ This Raspberry Pi-based vehicle to features closed-loop **PID motor controls**, 
   </tr>
 </table>
 
+<video src="vision-tests/trashbin.mp4" autoplay loop muted playsinline width="100%"></video>
 
 ### [Objective 4] Autonomous Traffic Light System (`objective4.py`)
 * **Description:** I achieved direct line driving by utilizing an MPU-6050 accelerometer gyroscope tracker for real-time heading correction.
@@ -54,6 +55,8 @@ This Raspberry Pi-based vehicle to features closed-loop **PID motor controls**, 
     <td><img src="vision-tests/GreenMask_Output.jpg" alt="Green Mask" width="200"/></td>
   </tr>
 </table>
+
+<video src="vision-tests/traffic.mp4" autoplay loop muted playsinline width="100%"></video> 
 
 ### [Objective 5] Hallway Cruise Control (`objective5.py`)
 * **Description:** For this cumulative challenge, I drove the vehicle through a hallway grid involving an uphill ramp climb, a wall-bounded 180° three-point turn, and a downhill ramp descent.
