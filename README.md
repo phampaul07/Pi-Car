@@ -66,4 +66,4 @@ https://github.com/user-attachments/assets/c8aca190-a707-4b80-b4c4-82076a0f5cad
 
 ## Academic Citation
 For explicit design equations, transfer functions, and full mathematical derivations of my feedforward ratios, please read my complete technical paper:
-**[Read my Full Technical Report](PiCar-Final_Paper.pdf)**
+**[Read my Full Technical Report](PiCar-Final-Paper.pdf)**
