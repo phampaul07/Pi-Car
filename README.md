@@ -33,8 +33,6 @@ This Raspberry Pi-based vehicle to features closed-loop **PID motor controls**, 
   </tr>
 </table>
 
-<video src="vision-tests/trashbin.mp4" autoplay loop muted playsinline width="100%"></video>
-
 ### [Objective 4] Autonomous Traffic Light System (`objective4.py`)
 * **Description:** I achieved direct line driving by utilizing an MPU-6050 accelerometer gyroscope tracker for real-time heading correction.
 * **Color Decision Matrix:** I processed three concurrent HSV masks (Red, Yellow, Green). For the Red mask, I utilized a bitwise OR operation to join the split bounds (0–10 and 160–180 Hue).
